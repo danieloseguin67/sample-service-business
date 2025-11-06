@@ -165,25 +165,52 @@ Value: yourusername.github.io
 
 ## 6. Common Issues and Fixes
 
+### Issue: "Not Found" Error During Deployment (404 from deploy-pages action)
+**Error Message:**
+```
+Error: Creating Pages deployment failed
+Error: HttpError: Not Found
+Error: Failed to create deployment (status: 404)
+Ensure GitHub Pages has been enabled
+```
+
+**Cause:** GitHub Pages is not enabled in repository settings
+**Fix:** 
+1. Go to your repository on GitHub
+2. Navigate to **Settings** → **Pages**
+3. Under "Build and deployment" → **Source**, select **GitHub Actions** (NOT "Deploy from a branch")
+4. Save the settings
+5. Re-run the failed workflow from the Actions tab
+
+**IMPORTANT:** You MUST enable GitHub Pages with "GitHub Actions" as the source BEFORE the first deployment will work.
+
 ### Issue: 404 Error or "File not found"
 **Cause:** Incorrect output path in workflow
 **Fix:** Verify the output path matches your `angular.json` configuration
 - Check `outputPath` in `angular.json`
 - Update workflow's `path: ./dist/[PROJECT-NAME]/browser` accordingly
 
-### Issue: White Page with No Errors
+### Issue: White/Blank Page with No Errors
 **Possible Causes:**
-1. **Wrong base-href**
+1. **Browser/CDN Cache (Most Common)**
+   - Hard refresh: `Ctrl + Shift + R` (Windows/Linux) or `Cmd + Shift + R` (Mac)
+   - Try incognito/private mode
+   - Clear browser cache completely
+   - Wait 5-10 minutes for GitHub Pages CDN to update
+   - Try a different browser to rule out local cache issues
+
+2. **Wrong base-href**
    - Custom domain: Use `--base-href=/`
    - GitHub Pages URL: Use `--base-href=/repo-name/`
    
-2. **Browser/CDN Cache**
-   - Hard refresh: `Ctrl + Shift + R` (Windows/Linux) or `Cmd + Shift + R` (Mac)
-   - Try incognito/private mode
-   - Wait 5-10 minutes for GitHub Pages CDN to update
-
 3. **Missing Hash Router**
    - Ensure `withHashLocation()` is added to router configuration
+
+4. **Check Browser Console (F12)**
+   - Open Developer Tools (F12)
+   - Check Console tab for JavaScript errors
+   - Check Network tab - verify main.js, polyfills.js are loading (status 200, not 404)
+   - If files show 404, check the build output path in workflow
 
 ### Issue: Assets Not Loading (404 for JSON, images, etc.)
 **Cause:** Using absolute paths for assets
@@ -203,11 +230,28 @@ Value: yourusername.github.io
     echo "your-domain.com" > ./dist/[PROJECT-NAME]/browser/CNAME
 ```
 
+### Issue: Site Works Locally But Not on GitHub Pages
+**Possible Causes:**
+1. **GitHub Pages not enabled** - Enable in Settings → Pages → Source: GitHub Actions
+2. **Wrong base-href** - Verify it matches your deployment URL type
+3. **Cache Issue** - Wait 10 minutes, then hard refresh browser
+4. **Missing hash routing** - Ensure `withHashLocation()` is in app.config.ts
+5. **Workflow error** - Check Actions tab for failed builds
+
+### Issue: Custom Domain Shows "404 There isn't a GitHub Pages site here"
+**Cause:** DNS not configured or not yet propagated
+**Fix:**
+1. Verify DNS records are correct at your domain provider
+2. Wait 24-48 hours for DNS propagation
+3. Check DNS with: `nslookup your-domain.com` or use https://dnschecker.org
+4. Ensure CNAME file exists in deployed build
+5. Verify custom domain is set in GitHub Pages settings
+
 ---
 
 ## 7. Testing Locally
 
-Before deploying, test your build locally:
+Before deploying, test your build locally to catch issues early:
 
 ```bash
 # Build with production configuration
@@ -223,21 +267,42 @@ python -m http.server 8080
 
 Then visit: `http://localhost:8080/#/`
 
+**What to Test:**
+- [ ] Home page loads correctly
+- [ ] All navigation links work
+- [ ] Routes show correct content (e.g., /#/services, /#/contact)
+- [ ] No 404 errors in browser console (F12 → Console)
+- [ ] All assets load (images, JSON files, etc.)
+- [ ] Translations work (if applicable)
+
+If local testing works but deployment doesn't, it's likely a cache or GitHub Pages configuration issue.
+
 ---
 
 ## 8. Deployment Checklist
 
+### Before First Deployment:
 - [ ] Create `.github/workflows/deploy.yml`
-- [ ] Update project name in workflow paths
+- [ ] Update project name in workflow paths (check `angular.json`)
 - [ ] Set correct `base-href` for your deployment type
 - [ ] Add custom domain to CNAME file (if applicable)
 - [ ] Enable hash-based routing in `app.config.ts`
-- [ ] Convert all asset paths to relative paths
-- [ ] Enable GitHub Pages in repository settings
-- [ ] Configure DNS records (if using custom domain)
+- [ ] Convert all asset paths to relative paths (if using HTTP for assets)
 - [ ] Test build locally before pushing
-- [ ] Commit and push to trigger deployment
-- [ ] Clear browser cache after first deployment
+
+### First Deployment:
+- [ ] **CRITICAL:** Enable GitHub Pages in repository settings → Set Source to "GitHub Actions"
+- [ ] Commit and push changes to trigger workflow
+- [ ] Monitor workflow in Actions tab for any errors
+- [ ] Wait 5-10 minutes for deployment and CDN propagation
+
+### After First Deployment:
+- [ ] Clear browser cache (Ctrl + Shift + R)
+- [ ] Test site in incognito/private mode
+- [ ] Verify all routes work (test navigation)
+- [ ] Configure DNS records (if using custom domain)
+- [ ] Add custom domain in GitHub Pages settings (if applicable)
+- [ ] Enable HTTPS once DNS propagates
 
 ---
 
