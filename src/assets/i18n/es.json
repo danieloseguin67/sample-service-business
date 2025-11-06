@@ -1,0 +1,41 @@
+{
+  "HEADER": {
+    "TITLE": "Empresa de Servicios",
+    "HOME": "Inicio",
+    "SERVICES": "Servicios",
+    "CONTACT": "Contacto"
+  },
+  "HOME": {
+    "TITLE": "Bienvenido a Empresa de Servicios",
+    "SUBTITLE": "Ofrecemos servicios de primera clase adaptados a sus necesidades.",
+    "SERVICE_HIGHLIGHTS": "Nuestros Servicios Destacados",
+    "CONSULTING": "Consultoría",
+    "CONSULTING_DESC": "Asesoramiento experto para ayudar a su empresa a crecer y tener éxito.",
+    "MAINTENANCE": "Mantenimiento",
+    "MAINTENANCE_DESC": "Mantenga sus sistemas funcionando sin problemas con nuestros servicios de mantenimiento.",
+    "SUPPORT": "Soporte",
+    "SUPPORT_DESC": "Soporte 24/7 para asegurar que su negocio nunca se detenga."
+  },
+  "SERVICES": {
+    "TITLE": "Nuestros Servicios",
+    "CONSULTING": "Consultoría",
+    "CONSULTING_DESC": "Nuestros consultores experimentados brindan orientación estratégica para ayudar a su empresa a alcanzar sus objetivos. Analizamos sus operaciones actuales e identificamos oportunidades de mejora y crecimiento.",
+    "MAINTENANCE": "Mantenimiento",
+    "MAINTENANCE_DESC": "Ofrecemos servicios de mantenimiento integrales para mantener sus sistemas funcionando al máximo rendimiento. El mantenimiento regular previene costosos tiempos de inactividad y garantiza la eficiencia operativa.",
+    "SUPPORT": "Soporte",
+    "SUPPORT_DESC": "Nuestro equipo de soporte dedicado está disponible 24/7 para atender sus inquietudes y resolver problemas rápidamente. Estamos comprometidos a mantener su negocio funcionando sin problemas y sin interrupciones."
+  },
+  "CONTACT": {
+    "TITLE": "Contáctenos",
+    "ADDRESS_TITLE": "Nuestra Dirección",
+    "PHONE": "Teléfono",
+    "EMAIL": "Correo Electrónico",
+    "MAP_TITLE": "Encuéntrenos en el Mapa",
+    "MAP_VIEW": "Vista del Mapa",
+    "MAP_NOTE": "La integración con Google Maps o un servicio de mapas similar iría aquí"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© 2025 Empresa de Servicios. Todos los derechos reservados.",
+    "LOCATION": "Montreal, QC, Canadá"
+  }
+}

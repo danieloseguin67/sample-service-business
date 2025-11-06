@@ -1,0 +1,41 @@
+{
+  "HEADER": {
+    "TITLE": "Service Business",
+    "HOME": "Home",
+    "SERVICES": "Services",
+    "CONTACT": "Contact"
+  },
+  "HOME": {
+    "TITLE": "Welcome to Service Business",
+    "SUBTITLE": "We offer top-notch services tailored to your needs.",
+    "SERVICE_HIGHLIGHTS": "Our Service Highlights",
+    "CONSULTING": "Consulting",
+    "CONSULTING_DESC": "Expert advice to help your business grow and succeed.",
+    "MAINTENANCE": "Maintenance",
+    "MAINTENANCE_DESC": "Keep your systems running smoothly with our maintenance services.",
+    "SUPPORT": "Support",
+    "SUPPORT_DESC": "24/7 support to ensure your business never stops."
+  },
+  "SERVICES": {
+    "TITLE": "Our Services",
+    "CONSULTING": "Consulting",
+    "CONSULTING_DESC": "Our experienced consultants provide strategic guidance to help your business achieve its goals. We analyze your current operations and identify opportunities for improvement and growth.",
+    "MAINTENANCE": "Maintenance",
+    "MAINTENANCE_DESC": "We offer comprehensive maintenance services to keep your systems running at peak performance. Regular maintenance prevents costly downtime and ensures operational efficiency.",
+    "SUPPORT": "Support",
+    "SUPPORT_DESC": "Our dedicated support team is available 24/7 to address your concerns and resolve issues quickly. We're committed to keeping your business running smoothly without interruption."
+  },
+  "CONTACT": {
+    "TITLE": "Contact Us",
+    "ADDRESS_TITLE": "Our Address",
+    "PHONE": "Phone",
+    "EMAIL": "Email",
+    "MAP_TITLE": "Find Us on the Map",
+    "MAP_VIEW": "Map View",
+    "MAP_NOTE": "Integration with Google Maps or similar mapping service would go here"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© 2025 Service Business. All rights reserved.",
+    "LOCATION": "Montreal, QC, Canada"
+  }
+}
